@@ -1,11 +1,15 @@
 def substrings phrase, substring_list
+	#turn phrase into an array
 	words = phrase.split
 	matches = {}
 
+	#iterate through each phrase word for each substring
 	substring_list.each do |substring|
 		frequency = 0
 
 		words.each do |word|
+			#returns [] when there is no match and [substring]
+			#when matched with word; also add to frequency
 			result =  word.downcase.scan(substring.downcase)
 			frequency += 1 if result != []
 		end
