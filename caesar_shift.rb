@@ -1,30 +1,30 @@
 def caesar_cipher(string, cipher)
-	characters = string.split("")
-	#we only need the remainder if the number entered is too large
-	cipher %= 26
+  characters = string.split("")
+  #we only need the remainder if the number entered is too large
+  cipher %= 26
 
-	#initialize the array and text output
-	text_shift = ""
-	characters_shift = []
+  #initialize the array and text output
+  text_shift = ""
+  characters_shift = []
 
-	characters.each do |character|
-		#this block finds and modifies lower/uppercase letters
-		character.scan(/[a-z]|[A-Z]/) do |letter|
-			cipher_letter = letter.ord + cipher
+  characters.each do |character|
+    #this block finds and modifies lower/uppercase letters
+    character.scan(/[a-z]|[A-Z]/) do |letter|
+      cipher_letter = letter.ord + cipher
 
-			#this block helps wrap letters from z to a by looking at their ASCII value
-			if (letter.ord < 91 && cipher_letter > 90) || (cipher_letter > 122)
-				character = (cipher_letter - 26).chr
-			else
-				character = cipher_letter.chr
-			end
-		end
+      #this block helps wrap letters from z to a by looking at their ASCII value
+      if (letter.ord < 91 && cipher_letter > 90) || (cipher_letter > 122)
+        character = (cipher_letter - 26).chr
+      else
+        character = cipher_letter.chr
+      end
+    end
 
-		characters_shift << character
-	end
+    characters_shift << character
+  end
 
-	text_shift = characters_shift.join
-	puts text_shift
+  text_shift = characters_shift.join
+  puts text_shift
 end
 
 puts "Say anything!"
